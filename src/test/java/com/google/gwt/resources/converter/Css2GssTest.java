@@ -47,4 +47,13 @@ public class Css2GssTest {
     String gss = IOUtils.toString(stream, "UTF-8");
     Assert.assertEquals(gss, convertedGss);
   }
+
+  @Test
+  public void testExternalMissingComma() throws IOException {
+    URL resource = Css2GssTest.class.getResource("missing_semicolon.css");
+    InputStream stream = Css2GssTest.class.getResourceAsStream("missing_semicolon.gss");
+    String convertedGss = new Css2Gss(resource, new PrintWriter(System.err)).toGss();
+    String gss = IOUtils.toString(stream, "UTF-8");
+    Assert.assertEquals(gss, convertedGss);
+  }
 }
