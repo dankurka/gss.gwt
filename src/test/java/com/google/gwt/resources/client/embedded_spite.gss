@@ -1,0 +1,3 @@
+.someClass {
+  gwt-sprite: 'imageResources.someResource';
+}

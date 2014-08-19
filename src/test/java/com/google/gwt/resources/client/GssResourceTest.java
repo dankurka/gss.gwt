@@ -21,6 +21,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 import com.google.gwt.resources.client.TestResources.ClassNameAnnotation;
 import com.google.gwt.resources.client.TestResources.EmptyClass;
 import com.google.gwt.resources.client.TestResources.ExternalClasses;
+import com.google.gwt.resources.client.TestResources.GssResourceAccessingEmbeddedImage;
 import com.google.gwt.resources.client.TestResources.SomeGssResource;
 import com.google.gwt.resources.client.TestResources.TestImportCss;
 import com.google.gwt.resources.client.TestResources.WithConstant;
@@ -177,6 +178,12 @@ public class GssResourceTest extends GWTTestCase {
         "color:white}";
 
     assertEquals(expectedCss, notStrict.getText());
+  }
+
+  public void testEmbeddedSprite() {
+    GssResourceAccessingEmbeddedImage gssResource = res().embeddedImageGssResource();
+    String text = gssResource.getText();
+    assertTrue(text.contains("background-image:url(\"" + res().imageResources().someResource().getSafeUri().asString()));
   }
 
   private TestResources res() {

@@ -21,6 +21,16 @@ import com.google.gwt.resources.client.CssResource.NotStrict;
 import com.google.gwt.resources.client.ScopeResource.SharedParent;
 
 public interface TestResources extends ClientBundle {
+
+  public interface ImageResources extends ClientBundle {
+    @Source("someImageResource.png")
+    ImageResource someResource();
+  }
+
+  interface GssResourceAccessingEmbeddedImage extends GssResource {
+    String someClass();
+  }
+
   interface SomeGssResource extends GssResource {
     String someClass();
   }
@@ -112,4 +122,9 @@ public interface TestResources extends ClientBundle {
 
   @NotStrict
   SomeGssResource notstrict();
+
+  ImageResources imageResources();
+
+  @Source("embedded_spite.gss")
+  GssResourceAccessingEmbeddedImage embeddedImageGssResource();
 }
